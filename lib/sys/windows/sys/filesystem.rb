@@ -3,9 +3,15 @@ require_relative 'filesystem/functions'
 require_relative 'filesystem/helper'
 
 require 'socket'
-require 'win32ole'
 require 'date'
 require 'time'
+
+begin
+  require 'win32ole'
+rescue LoadError
+  puts "Could not find win32ole (or jruby-win32ole) gem."
+end
+
 
 # The Sys module serves as a namespace only.
 module Sys
